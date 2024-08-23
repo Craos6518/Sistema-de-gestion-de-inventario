@@ -1,0 +1,11 @@
+main o master: La rama principal, donde se encuentra el código estable y listo para producción.
+
+development o dev: Una rama para el desarrollo continuo y pruebas. Aquí es donde se integran nuevas funcionalidades antes de que se mezclen con la rama principal.
+
+feature/xyz: Ramas específicas para cada nueva funcionalidad o característica que estés implementando. Por ejemplo, feature/login-system para una nueva funcionalidad de inicio de sesión.
+
+bugfix/xyz: Ramas para solucionar errores específicos. Por ejemplo, bugfix/fix-login-error.
+
+hotfix/xyz: Ramas para correcciones urgentes que se deben aplicar directamente a la rama main o master. Por ejemplo, hotfix/critical-security-patch.
+
+release/xyz: Ramas para preparar nuevas versiones de tu proyecto antes de lanzarlas a producción. Por ejemplo, release/v1.0
