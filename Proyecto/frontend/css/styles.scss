@@ -1,0 +1,23 @@
+// Variables
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #f8f9fa;
+
+// Estilos globales
+body {
+    background-color: $background-color;
+    color: $secondary-color;
+}
+
+// Personalización de la tabla
+.table {
+    thead {
+        background-color: $primary-color;
+        color: white;
+    }
+    tbody tr:hover {
+        background-color: lighten($primary-color, 20%);
+    }
+}
+
+// Otros estilos personalizados
