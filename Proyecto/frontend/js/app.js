@@ -1,9 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Obtener los productos desde el servidor
+    fetchProducts();
+
+    document.getElementById('addProductForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        addProduct();
+    });
+});
+
+// Función para obtener y mostrar productos
+function fetchProducts() {
     fetch('http://localhost:3000/api/products')
         .then(response => response.json())
         .then(products => {
             const productList = document.getElementById('productList');
+            productList.innerHTML = ''; // Limpiar la tabla antes de rellenarla
             products.forEach(product => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -40,4 +50,26 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         })
         .catch(error => console.error('Error al cargar los productos:', error));
-});
+}
+
+// Función para agregar un nuevo producto
+function addProduct() {
+    const NAME = document.getElementById('productName').value;
+    const description = document.getElementById('productDescription').value;
+    const price = document.getElementById('productPrice').value;
+    const stock = document.getElementById('productStock').value;
+
+    fetch('http://localhost:3000/api/products', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ NAME, description, price, stock })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Producto agregado con éxito');
+        fetchProducts(); // Refresca la lista de productos
+    })
+    .catch(error => console.error('Error al agregar el producto:', error));
+}
