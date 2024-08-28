@@ -190,7 +190,7 @@ Para iniciar el proyecto:
    Navega a la carpeta `/backend` y ejecuta:
 
    ```bash
-   npm run dev
+   npm run server.js
    ```
 
 2. **Inicia el frontend:**
