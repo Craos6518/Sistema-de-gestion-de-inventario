@@ -28,30 +28,3 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: 'Error del servidor' });
     }
 };
-
-// Controlador para manejar el registro de usuarios
-exports.register = async (req, res) => {
-    const { username, email, password } = req.body;
-
-    try {
-        // Verificar si el usuario ya existe
-        const existingUser = await User.findOne({ where: { username } });
-        if (existingUser) {
-            return res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
-        }
-
-        // Encriptar la contraseña
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Crear un nuevo usuario
-        const newUser = await User.create({
-            username,
-            email,
-            PASSWORD: hashedPassword
-        });
-
-        res.status(201).json({ message: 'Usuario registrado exitosamente' });
-    } catch (error) {
-        res.status(500).json({ message: 'Error del servidor' });
-    }
-};
