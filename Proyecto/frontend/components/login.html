@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Login - Sistema de Gestión de Inventario</title>
    <link rel="stylesheet" href="/Proyecto/frontend/css/styles.css">
 </head>
 <body>
@@ -24,5 +24,23 @@
     <a href="#" class="btn-link">Forgot your password?</a>
   </form>
 </div>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Simulación de validación (normalmente enviarías esto al backend)
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === "admin" && password === "1234") {
+          // Guardar el estado de autenticación en el Local Storage
+          localStorage.setItem('isAuthenticated', 'true');
+          // Redirigir al index
+          window.location.href = 'index.html';
+      } else {
+          alert('Credenciales incorrectas. Intente de nuevo.');
+      }
+  });
+</script>
 </body>
 </html>
